@@ -1,5 +1,7 @@
+//Nome do pacote
 package br.com.adrianob.dao;
 
+//importações
 import br.com.adrianob.model.Cliente;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,9 +13,12 @@ import java.util.ArrayList;
  *
  * @author drink
  */
+//Clase DAOCliente
 public class DaoCliente {
-
+    
+    //Variável de escopo de classe de objeto Conexão
     private Connection conn;
+    //Constante SQL de consulta (select)
     private static final String SELECT_ALL = "select * from tbl_cliente ";
 
     public DaoCliente(Connection cnx) {
