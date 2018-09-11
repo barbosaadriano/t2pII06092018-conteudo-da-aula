@@ -21,34 +21,54 @@ public class DaoCliente {
     //Constante SQL de consulta (select)
     private static final String SELECT_ALL = "select * from tbl_cliente ";
 
+    //Construtor da classe com injeção de dependência de uma conexão
     public DaoCliente(Connection cnx) {
+        //Variável de escopo de classe recebe a conexão passada no parâmetro do contrutor
         this.conn = cnx;
+        //Aciona o método criarTabela
         criarTabela();
     }
 
+    //Método de criação de tabela (SQL)
     private void criarTabela() {
+        //Uma string com o código SQL para criação da tabela cliente caso ela não exista
         String sql = "CREATE TABLE IF NOT EXISTS tbl_cliente ";
         sql += "( codigo integer primary key not null auto_increment, ";
         sql += " nome varchar(60), cnpj varchar(20) unique, `status` ";
         sql += " varchar(8) not null default '" + Cliente.statusValidos[0] + "')";
+        
+        //O código a seguir pode gerar exceptions, por isso está dentro de um TryCatch
         try {
+            //Objeto PreparedStatement (ps) recebe o retorno de objeto PreparedStatement
+            //parametizado com a string SQL
             PreparedStatement ps = this.conn.prepareStatement(sql);
+            //Executa o código SQL
             ps.execute();
         } catch (SQLException ex) {
+            //Caso der uma exception, printa a mensagem de erro
             System.out.println(ex.getMessage());
         }
 
     }
 
+    //Método para salvar o cliente
     public void salvarCliente(Cliente c) {
+        //String SQL para update
         String sql = "update tbl_cliente set nome = ? , ";
         sql += " cnpj = ?, `status` = ? where codigo = ? ";
+        //variável para receber o código do cliente passado no paramâmetro do método
         int cod = c.getCodigo();
+        //variável recebe o nome do cliente
         String nome = c.getNome();
+        //variável recebe o cnpj do cliente
         String cnpj = c.getCnpj();
+        //variável recebe o status do cliente
         String status = c.getStatus();
+        //se a variável código for menor que 1
         if (cod < 1) {
+            //variável código recebe valor 0
             cod = 0;
+            //String SQL recebe código de inserção de cliente
             sql = "insert into tbl_cliente (nome, cnpj, `status`, codigo) ";
             sql += "values (?, ?, ?, ?) ";
         }
