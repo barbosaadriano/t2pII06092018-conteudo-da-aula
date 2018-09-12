@@ -22,9 +22,9 @@ public class Conexao {
         //Cria um objeto Properties
         Properties config = new Properties();
         //Insere valores de configuração
-        config.put("user", "devel");
+        config.put("user", "root");
         //Insere valores de configuração
-        config.put("password", "developer");
+        config.put("password", "root");
         //Crua uma Connection nula
         Connection conn = null;
          //O código a seguir pode gerar exceptions, então está circundado com tryCatch
