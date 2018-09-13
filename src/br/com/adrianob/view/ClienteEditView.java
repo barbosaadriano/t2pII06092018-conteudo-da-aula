@@ -1,5 +1,8 @@
+
+// Nome do Pacote
 package br.com.adrianob.view;
 
+// Importações
 import br.com.adrianob.model.Cliente;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -19,13 +22,17 @@ import javax.swing.border.TitledBorder;
  *
  * @author drink
  */
+
+// Classe ClienteEditView extendendo  JDialog
 public class ClienteEditView extends JDialog {
     
+    // Declaração de variáveis de escopo da classe
     private ActionListener al;
     private JButton btnSalvar, btnVoltar;
     private JTextField txtCodigo, txtNome, txtCnpj;
     private JComboBox cbStatus;
     
+    // Método para criação da tela "Edição de CLientes"
     public ClienteEditView(ActionListener al,Cliente c) {
         super();
         this.setTitle("Edição de  cliente");
@@ -34,6 +41,7 @@ public class ClienteEditView extends JDialog {
         this.setDadosCliente(c);
     }
     
+    // Método para incluir os Objetos (Botões, Labels, etc.), na tela "Edição de Clientes"
     private void init() {
         this.setLayout(new BorderLayout());
         JPanel pnControles = new JPanel(new FlowLayout(FlowLayout.RIGHT));
@@ -81,6 +89,7 @@ public class ClienteEditView extends JDialog {
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
     }
     
+    // Método para para Salvar os dados do cliente  cadastrado
     public void setDadosCliente(Cliente c) {
         txtCodigo.setText(Integer.toString(c.getCodigo()));
         txtNome.setText(c.getNome());
@@ -88,6 +97,7 @@ public class ClienteEditView extends JDialog {
         cbStatus.setSelectedItem(c.getStatus());
     }
     
+    // Método para trazer os dados dos clientes do Banco de Dados.
     public Cliente getDadosCliente() {
         Cliente c = new Cliente();
         c.setCodigo(Integer.parseInt(txtCodigo.getText()));

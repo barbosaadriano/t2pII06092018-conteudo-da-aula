@@ -3,8 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
+//Nome do Pacote
 package br.com.adrianob.view;
 
+//Importações
 import java.awt.Color;
 import java.awt.Component;
 import javax.swing.JTable;
@@ -14,6 +17,8 @@ import javax.swing.table.DefaultTableCellRenderer;
  *
  * @author drink
  */
+
+// Classe AdrianoCellRenderer extendendo de DefaultTableCellRenderer
 public class AdrianoCellRenderer extends DefaultTableCellRenderer {
 
     @Override

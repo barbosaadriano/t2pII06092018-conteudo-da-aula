@@ -1,5 +1,7 @@
+//Nome do Pacote
 package br.com.adrianob.dao;
 
+//Importações
 import br.com.adrianob.model.Cliente;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,8 +13,11 @@ import java.util.ArrayList;
  *
  * @author drink
  */
-public class DaoCliente {
 
+//Classe de Controle
+public class DaoCliente {
+    
+    //Declaração de Váriaveis e Escopo da Classe
     private Connection conn;
     private static final String SELECT_ALL = "select * from tbl_cliente ";
 
@@ -20,7 +25,7 @@ public class DaoCliente {
         this.conn = cnx;
         criarTabela();
     }
-
+    //Método para criação de Tabela
     private void criarTabela() {
         String sql = "CREATE TABLE IF NOT EXISTS tbl_cliente ";
         sql += "( codigo integer primary key not null auto_increment, ";
@@ -34,7 +39,8 @@ public class DaoCliente {
         }
 
     }
-
+    
+    //Método para salvar informações na tabela
     public void salvarCliente(Cliente c) {
         String sql = "update tbl_cliente set nome = ? , ";
         sql += " cnpj = ?, `status` = ? where codigo = ? ";
@@ -59,6 +65,7 @@ public class DaoCliente {
         }
     }
 
+    //Método para remoção de informações da Tabela
     public void removerCliente(Cliente c) {
         String sql = "delete from tbl_cliente where codigo = ?";
         try {
@@ -70,6 +77,7 @@ public class DaoCliente {
         }
     }
 
+    // Método para listagem das informações contidas na tabela.
     public ArrayList<Cliente> listarCliente(Cliente c) {
         ArrayList<Cliente> retorno = new ArrayList<>();
         String where = " where 1=1 ";
