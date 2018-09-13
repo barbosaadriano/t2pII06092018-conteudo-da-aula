@@ -30,11 +30,13 @@ public class AdrianoCellRenderer extends DefaultTableCellRenderer {
         }
         if (column == 3) {
             String vl = (String)value;
+			//Caso estiver ativo ele vai colocar o background na cor VERDE caso não vai colocar a cor VERMELHA
             if (vl.contains("Ativo")) {
                 setBackground(Color.GREEN);
             }  else {
                 setBackground(Color.red);
             }
+			//Vai setar a cor branca na cor da letra
             setForeground(Color.white);
         }
         return super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column); //To change body of generated methods, choose Tools | Templates.
