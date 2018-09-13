@@ -1,5 +1,7 @@
+// Nome do Pacote
 package br.com.adrianob.view;
 
+//Importações
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -17,8 +19,11 @@ import javax.swing.JTextField;
  *
  * @author drink
  */
+
+//Classe ClienteListView extendendo JFrame
 public class ClienteListView extends JFrame {
 
+    // Declaração das variáveis de escopo da classe
     private JTable tabela;
     private JButton btnListar;
     private JButton btnNovo;
@@ -27,12 +32,14 @@ public class ClienteListView extends JFrame {
     private JTextField txtPesquisa;
     private ActionListener al;
 
+    // Método para criação da tela "Listar Clientes"
     public ClienteListView(ActionListener al) throws HeadlessException {
         super("Listar clientes");
         this.al = al;
         this.init();
     }
 
+    // Método para incluir os Objetos (Botões, Labels, etc.), na tela "Listar Clientes"
     private void init() {
         setLayout(new BorderLayout());
         JPanel pnControles = new JPanel(new FlowLayout(FlowLayout.LEFT));
@@ -72,10 +79,11 @@ public class ClienteListView extends JFrame {
         this.setLocationRelativeTo(null);
     }
 
+    // Método para ~mostrar as informações treazidas em uma tabela
     public JTable getTabela() {
         return tabela;
     }
-
+    // Método para realizar a pesquisa.
     public JTextField getTxtPesquisa() {
         return txtPesquisa;
     }
